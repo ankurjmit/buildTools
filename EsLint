@@ -18,3 +18,6 @@ finally to check es linting on files
 eslint yourfile.js - > it will check in one file only 
 
 "eslint \"./source/templates/components/**/*.js\" \"./source/scripts/**/*.js\" --color" -> for all files with path as defined
+
+To generate a report of all error or warnings afer check eslint use
+npm install eslint-detailed-reporter --save-dev
