@@ -1,0 +1,6 @@
+sass-lint --config ./sass-lint.yml './source/templates/components/**/*.scss' -v -q -f html -o 'sass-lint-report.html'
+https://www.npmjs.com/package/sass-lint
+
+it is used for checking any sass related error.
+
+we can provide a config file for this.
