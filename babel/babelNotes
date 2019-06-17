@@ -1,0 +1,90 @@
+================================================Babel Transpiler For ES6======================================================================================
+
+-> Babel is a JS transpiler that converts ECMAScript 2015+ new JS code into old JS code.
+-> The core functionality of Babel resides at the @babel/core module.
+-> @babel/cli is a tool that allows you to use babel from the terminal
+-> Transformations come in the form of plugins, which are small JavaScript programs that instruct Babel on how to carry out transformations to the code.
+-> To transform ES2015+ syntax into ES5 we can rely on official plugins like @babel/plugin-transform-arrow-functions
+-> Babel is a compiler (source code => output code). Like many other compilers it runs in 3 stages: parsing, transforming, and printing.
+-> Now, out of the box Babel doesn't do anything. It basically acts like const babel = code => code; by parsing the code and then generating 
+	the same code back out again. You will need to add plugins for Babel to do anything.
+
+Instead of individual plugins, you can also enable a set of plugins in a preset.
+
+=====================================================Plugins & Presets========================================================================================
+	-> Transformations come in the form of plugins, which are small JavaScript programs that instruct Babel on how to carry out transformations to the code. 
+		To transform ES2015+ syntax into ES5 we can rely on official plugins like @babel/plugin-transform-arrow-functions:
+	-> We have many ES6 features , to transformations of all we need to add many plugins-> to solve this we have preset
+	-> Instead of adding all the plugins we want one by one, we can use a "preset" which is just a pre-determined set of plugins. 
+	-> @babel/preset-env -> Without any configuration, this preset will include all plugins to support modern JavaScript (ES2015, ES2016, etc.)
+	-> const presets = [
+		[
+			"@babel/env",
+			{
+			  targets: {
+				edge: "17",
+				firefox: "60",
+				chrome: "67",
+				safari: "11.1",
+			  },
+			},
+		  ],
+		];
+
+		module.exports = { presets };
+	
+	-> Now the env preset will only load transformation plugins for features that are not available in our target browsers. 
+	-> Don't want to assemble your own set of plugins? No problem! Presets can act as an array of Babel plugins or even a sharable options config
+	-> @babel/preset-env
+	-> @babel/preset-flow
+	-> @babel/preset-react
+	->@babel/preset-typescript
+	
+==============================================================Polyfill=========================================================================================
+
+-> The @babel/polyfill module includes core-js and a custom regenerator runtime to emulate a full ES2015+ environment.
+
+-> This means you can use new built-ins like Promise or WeakMap, static methods like Array.from or Object.assign, instance methods like 
+	Array.prototype.includes, and generator functions (provided you use the regenerator plugin). 
+	The polyfill adds to the global scope as well as native prototypes like String in order to do this.
+-> @babel/polyfill
+->  useBuiltIns: "usage", -> Babel will now inspect all code for features that r missing in ur target environments and include only the required polyfills 
+-> It will not load all polyfill .Only loads that are not present in the target browsers
+-> 
+
+
+-> Babel is a javascript compiler: it parses, transforms and outputs transformed code.
+
+-> babel-core
+	-> This is the parse and output parts.
+	-> It does not do any transformation.
+	-> It can be used from the command line or from a bundler (webpack, rollup and co.)
+-> babel-polyfill / babel-runtime
+	-> Acts on the transform part by prepending es5 javascript to your code to emulate es2015+ functions (like Object.assign).
+	-> Relies on Regenerator (to polyfill generators) and core-js (to polyfill all the rest).
+	-> Difference between babel-polyfill and babel-runtime: the former defines global methods (and pollutes the global scope) 
+		whereas the latter transforms your code to make the same functionnality available as explained in this answer.
+-> babel plugins
+	-> Transform the code you wrote.
+	-> babel syntax / transform plugins: parse and transform es2015+ syntax (like arrow functions) to convert it to es5.
+	-> babel-plugins-stage-x (from stage-0 to stage-4): transform future javascript syntax which is not in the JS specs yet,
+	starting at stage-0 (just an idea) down to stage-4 (will land in the babel-plugins soon).
+-> babel-preset-env
+	-> babel-preset-env determines the Babel plugins and polyfills needed for a specific environment.
+	-> With no configuration, it will load all the plugins (including es2015, es2016 and es2017) required to transpile es2015+ to es5.
+	-> With a target option, it loads only the plugins required to run on a specific target.
+	-> With the builtIn option, it uses only the babel-polyfill which are not built-in the target.
+	-> Does not work with babel-transform-runtime yet (as of nov. 2017).
+-> Following is the list of features that need polyfill support when used in older browsers −
+
+	-> Promises
+	-> Map
+	-> Set
+	-> Symbol
+	-> Weakmap
+	-> Weakset
+	-> Array.from, Array.includes, Array.of, Array#find, Array.buffer, Array#findIndex
+	-> Object.assign, Object.entries, Object.values
+
+
+
