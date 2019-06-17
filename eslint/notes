@@ -1,0 +1,23 @@
+ESLint
+
+npm i --save-dev eslint
+https://eslint.org/docs/user-guide/getting-started
+
+After running eslint --init, you’ll have a .eslintrc file in your directory. In it, you’ll see some rules configured like this:
+{
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"]
+    }
+}
+
+"extends": "eslint:recommended" - for adding all basic rules.Also we can add our own rule if we need
+
+finally to check es linting on files 
+
+eslint yourfile.js - > it will check in one file only 
+
+"eslint \"./source/templates/components/**/*.js\" \"./source/scripts/**/*.js\" --color" -> for all files with path as defined
+
+To generate a report of all error or warnings afer check eslint use
+npm install eslint-detailed-reporter --save-dev
