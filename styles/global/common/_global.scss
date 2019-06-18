@@ -1,0 +1,215 @@
+html {
+    @include line-height(24px, $font-baseline);
+    font-size: $font-baseline;
+
+    @media #{$desktop} {
+        font-size: calculate-base-font($v-desktop);
+    }
+
+    @media #{$desktop-large} {
+        font-size: calculate-base-font($v-desktop-l);
+    }
+
+    @media #{$mobile} {
+        font-size: calculate-base-font($v-mobile, true);
+    }
+}
+
+$text-tags: ('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p', 'a', 'section', 'article', 'nav', 'aside', 'header', 'footer', 'b', 'strong', 'i', 'td', 'th', 'button');
+
+@each $tag in $text-tags {
+    #{$tag} {
+        @extend %textreset;
+    }
+}
+
+body {
+    background: $color-mercury;
+    color: $color-text;
+    font-family: $font-light;
+    -webkit-text-size-adjust: 100%;
+    min-height: 100vh;
+}
+
+a {
+    color: $color-congress-blue;
+    font-family: $font-regular;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: none;
+    outline: 0;
+    transition: all $anim-speed-quick $anim-ease;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+button {
+    background-color: transparent;
+    color: $color-text;
+    cursor: pointer;
+}
+
+img,
+video,
+object {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    margin-bottom: $spacing-big;
+}
+
+select {
+    @extend %appearance;
+
+    &.form-control {
+        @include padding-right($padding-l);
+    }
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+figure {
+    margin-bottom: $spacing-big;
+
+    img {
+        margin-bottom: $spacing-small;
+    }
+}
+
+figcaption {
+    font-style: italic;
+}
+
+ol,
+ul {
+    @extend %textreset;
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    white-space: nowrap;
+}
+
+[role="main"] {
+    flex: 1;
+}
+
+.semi-bold {
+    font-family: $font-semi-bold;
+}
+
+.bold {
+    font-family: $font-bold;
+}
+
+// Custom classes for layout
+.tp-container {
+    @include padding(0 15px);
+    max-width: 100%;
+
+    @media #{$desktop} {
+        @include max-width($body-max-width);
+        margin: 0 auto;
+    }
+
+    .row {
+        @include margin-left(-15px);
+        @include margin-right(-15px);
+
+        &.no-gutters {
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+
+    .row {
+        .tp-column__sidenav {
+            padding-left: 0;
+        }
+    }
+}
+
+.tp-column {
+    $content-width: 770px;
+    $nav-width: 224px;
+
+    &__content,
+    &__notif {
+        @include padding(0 $padding-md);
+
+        @media #{$desktop} {
+            @include padding(0 $padding-l);
+        }
+    }
+
+    &__content {
+        @include margin-top(104px);
+
+        @media #{$desktop} {
+            @include margin-top(112px);
+            @include padding-left(248px);
+
+        }
+
+        &.col-lg-2 {
+            $content-max-width: $content-width/$body-max-width*100;
+            max-width: $content-max-width;
+        }
+    }
+
+    &__notif {
+        @media #{$desktop} {
+            $notif-max-width: ($body-max-width - $nav-width - $content-width)/$body-max-width*100;
+            max-width: $notif-max-width;
+        }
+    }
+}
+
+// Classes for Wrapping icons
+.form-element {
+    position: relative;
+
+    &__icon {
+        @include right($margin-sm);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.form-control[readonly] {
+    background-color: transparent;
+}
+
+// Page title
+.tp-page-title {
+    @include margin-bottom($margin-md);
+
+    @media #{$desktop} {
+        @include margin-bottom($margin-l);
+    }
+}
+
+.tp-modal-dialog {
+    @media #{$mobile-large} {
+        margin: convert-to-rem($margin-md) auto;
+    }
+
+    @media #{$desktop} {
+        margin: convert-to-rem($margin-l) auto;
+    }
+}

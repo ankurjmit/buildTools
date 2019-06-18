@@ -1,0 +1,79 @@
+/*------------------------------------*\
+    #TYPOGRAPHY
+\*------------------------------------*/
+
+$font: "muliregular",
+sans-serif;
+$font-secondary: "muliregular",
+sans-serif;
+$font-regular: "muliregular",
+sans-serif;
+$font-black: "muliblack",
+sans-serif;
+$font-black-italic: "muliblack_italic",
+sans-serif;
+$font-blackItalic: $font-black-italic;
+$font-bold: "mulibold",
+sans-serif;
+$font-bold-italic: "mulibold_italic",
+sans-serif;
+$font-boldItalic: $font-bold-italic;
+$font-extra-bold: "muliextrabold",
+sans-serif;
+$font-extraBold: $font-extra-bold;
+$font-extra-bold-italic: "muliextrabold_italic",
+sans-serif;
+$font-extraBoldItalic: $font-extra-bold-italic;
+$font-extra-light: "muliextralight",
+sans-serif;
+$font-extraLight: $font-extra-light;
+$font-extraLightItalic: "muliextralight_italic",
+sans-serif;
+$font-italic: "muliitalic",
+sans-serif;
+$font-light: "mulilight",
+sans-serif;
+$font-light-italic: "mulilight_italic",
+sans-serif;
+$font-lightItalic: $font-light-italic;
+$font-semi-bold: "mulisemibold",
+sans-serif;
+$font-semi-bold-italic: "mulisemibold_italic",
+sans-serif;
+$font-semi-boldItalic: $font-semi-bold-italic;
+
+.hero {
+    @include font-size($font-xxxl);
+    @include line-height(60px, $font-baseline);
+    font-weight: normal;
+}
+
+h1 {
+    @include font-size($font-xxl);
+    font-weight: lighter;
+}
+
+h2 {
+    @include font-size($font-xl);
+    font-weight: lighter;
+}
+
+h3 {
+    @include font-size($font-l);
+    font-weight: lighter;
+}
+
+h4 {
+    @include font-size($font-md);
+    font-weight: lighter;
+}
+
+.font-style-sm {
+    @include font-size($font-sm);
+    font-weight: normal;
+}
+
+.font-style-xs {
+    @include font-size($font-xs);
+    font-weight: normal;
+}
